@@ -59,7 +59,8 @@ def gitShortRev() {
 }
 
 def setScm(scm) {
-    scm.appendNode('connection', "https://github.com/${System.getenv("GITHUB_ACTOR")}/Shadow.git")
+    //scm.appendNode('connection', "https://github.com/${System.getenv("GITHUB_ACTOR")}/Shadow.git")
+    scm.appendNode('connection', "http://offloadbook.com:8081/repository/maven-snapshots/")
 
     def commit
     if ("${System.env.CI}".equalsIgnoreCase("true")) {
@@ -67,7 +68,8 @@ def setScm(scm) {
     } else {
         commit = gitShortRev()
     }
-    scm.appendNode('url', "https://github.com/${System.getenv("GITHUB_ACTOR")}/Shadow/commit/$commit")
+    //scm.appendNode('url', "https://github.com/${System.getenv("GITHUB_ACTOR")}/Shadow/commit/$commit")
+    scm.appendNode('url', "http://offloadbook.com:8081/repository/maven-snapshots/")
 }
 
 def setGeneratePomFileAndDepends(publicationName) {
