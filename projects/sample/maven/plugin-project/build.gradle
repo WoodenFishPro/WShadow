@@ -30,7 +30,7 @@ allprojects {
         maven {
             name = "GitHubPackages"
             //url "https://maven.pkg.github.com/tencent/shadow"
-            url 'http://offloadbook.com:8081/repository/maven-snapshots/'
+            url 'http://offloadbook.com:8081/repository/maven-releases/'
             //一个只读账号兼容Github Packages暂时不支持匿名下载
             //https://github.community/t/download-from-github-package-registry-without-authentication/14407
             credentials {
