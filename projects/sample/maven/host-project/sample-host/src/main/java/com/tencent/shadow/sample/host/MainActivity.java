@@ -6,7 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+//import com.tencent.shadow.dynamic.host.EnterCallback;
+//import com.tencent.shadow.dynamic.host.PluginManager;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.tencent.shadow.dynamic.host.PluginManager;
 import com.tencent.shadow.sample.introduce_shadow_lib.InitApplication;
@@ -20,6 +23,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Toast.makeText(this, "Version2.1.2", Toast.LENGTH_LONG).show();
         final LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 

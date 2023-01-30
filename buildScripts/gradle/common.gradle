@@ -17,7 +17,7 @@ allprojects {
         ext.VERSION_NAME = System.getenv("GITHUB_REF_SLUG")
     } else {
         //ext.VERSION_NAME = "local"
-        ext.VERSION_NAME = "2.1.2"
+        ext.VERSION_NAME = "9.1.2"
     }
 
     if ("${System.env.PUBLISH_RELEASE}".equalsIgnoreCase("true")) {

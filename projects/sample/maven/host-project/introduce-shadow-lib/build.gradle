@@ -3,7 +3,6 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 29
 
-
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 28
@@ -17,9 +16,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
     implementation "com.tencent.shadow.dynamic:host:$shadow_version"
+    //implementation 'com.tencent.shadow.dynamic:host:2.1.2@jar'
 }

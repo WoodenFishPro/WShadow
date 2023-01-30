@@ -1,21 +1,18 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.shadow_version = '2.1.2'
+    ext.shadow_version = '9.1.2'
     repositories {
-      //  if (!System.getenv().containsKey("DISABLE_TENCENT_MAVEN_MIRROR")) {
-       //     println("hello __ > Test1")
-       //     maven { url 'https://mirrors.tencent.com/nexus/repository/maven-public/' }
-     //   } else {
-            println("hello __ > Test0")
-
         maven {
             allowInsecureProtocol true
-            url 'http://offloadbook:8081/repository/maven-releases/'
+            url 'http://43.139.20.80:8081/repository/maven-releases/'
+            credentials {
+                username = 'admin'
+                password = 'admin111'
+            }
         }
-            google()
-            mavenCentral()
-    //    }
+        google()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.2'
@@ -24,23 +21,18 @@ buildscript {
 
 allprojects {
     repositories {
-       // if (!System.getenv().containsKey("DISABLE_TENCENT_MAVEN_MIRROR")) {
-      //      println("hello __ > Test2")
-         //   maven { url 'https://mirrors.tencent.com/nexus/repository/maven-public/' }
-
         maven {
             allowInsecureProtocol true
-            url 'http://offloadbook:8081/repository/maven-releases/'
+            url 'http://43.139.20.80:8081/repository/maven-releases/'
+            credentials {
+                username = 'admin'
+                password = 'admin111'
+            }
         }
-
-      //  } else {
-       //     println("hello __ > Test2_1")
-            google()
-            mavenCentral()
-       // }
+        google()
+        mavenCentral()
 
 //        maven {
-//            println("hello __ > Test3")
 //            name = "GitHubPackages"
 //            url "https://maven.pkg.github.com/tencent/shadow"
 //            //一个只读账号兼容Github Packages暂时不支持匿名下载
@@ -50,7 +42,6 @@ allprojects {
 //                password = '\u0067hp_s3VOOZnLf1bTyvHWblPfaessrVYyEU4JdNbs'
 //            }
 //        }
-
         mavenLocal()
     }
 }
