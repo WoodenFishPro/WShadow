@@ -28,6 +28,11 @@ android {
             applicationId "com.tencent.shadow.sample.host"
         }
     }
+
+    aaptOptions {
+        additionalParameters "--package-id", "0x7E", "--allow-reserved-package-id"
+
+    }
 }
 
 dependencies {
@@ -39,27 +44,19 @@ dependencies {
 //这段buildscript配置的dependencies是为了apply plugin: 'com.tencent.shadow.plugin'能找到实现
 buildscript {
     repositories {
-        if (!System.getenv().containsKey("DISABLE_TENCENT_MAVEN_MIRROR")) {
-            maven { url 'https://mirrors.tencent.com/nexus/repository/maven-public/' }
-//            maven {
-//                url 'http://offloadbook.com:8081/repository/maven-releases/'
-//                allowInsecureProtocol = true
-//            }
-        } else {
+            maven {
+                url 'http://offloadbook.com:8081/repository/maven-releases/'
+                allowInsecureProtocol = true
+            }
             google()
             mavenCentral()
-        }
+
         maven {
             name = "GitHubPackages"
             url "https://maven.pkg.github.com/tencent/shadow"
-           //url "http://offloadbook.com:8081/repository/maven-releases/"
-           // allowInsecureProtocol = true
-
             //一个只读账号兼容Github Packages暂时不支持匿名下载
             //https://github.community/t/download-from-github-package-registry-without-authentication/14407
             credentials {
-//                username = 'admin'
-//                password = 'admin111'
                 username = 'readonlypat'
                 password = '\u0067hp_s3VOOZnLf1bTyvHWblPfaessrVYyEU4JdNbs'
             }
@@ -83,7 +80,7 @@ shadow {
                         businessName = 'sample-plugin'//businessName相同的插件，context获取的Dir是相同的。businessName留空，表示和宿主相同业务，直接使用宿主的Dir。
                         partKey = 'sample-plugin'
                         buildTask = 'assemblePluginDebug'
-                        apkName = 'plugin-app-plugin-debug.apk'
+                        name = 'plugin-app-plugin-debug.apk'
                         apkPath = 'plugin-app/build/outputs/apk/plugin/debug/plugin-app-plugin-debug.apk'
                     }
                 }
@@ -97,7 +94,7 @@ shadow {
                         businessName = 'demo'
                         partKey = 'sample-plugin'
                         buildTask = 'assemblePluginRelease'
-                        apkName = 'plugin-app-plugin-release.apk'
+                        name = 'plugin-app-plugin-release.apk'
                         apkPath = 'plugin-app/build/outputs/apk/plugin/release/plugin-app-plugin-release.apk'
                     }
                 }
