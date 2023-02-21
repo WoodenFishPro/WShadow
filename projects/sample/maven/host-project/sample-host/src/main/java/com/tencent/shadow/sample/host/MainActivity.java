@@ -10,10 +10,14 @@ import android.widget.Toast;
 
 //import com.tencent.shadow.dynamic.host.EnterCallback;
 //import com.tencent.shadow.dynamic.host.PluginManager;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.tencent.mmkv.MMKV;
 import com.tencent.shadow.dynamic.host.EnterCallback;
 import com.tencent.shadow.dynamic.host.PluginManager;
 import com.tencent.shadow.sample.introduce_shadow_lib.InitApplication;
 
+@Route(path = "/host/main")
 public class MainActivity extends Activity {
 
     public static final int FROM_ID_START_ACTIVITY = 1001;
@@ -23,6 +27,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ARouter.getInstance().inject(this);
         Toast.makeText(this, "Version2.1.2", Toast.LENGTH_LONG).show();
         final LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -35,6 +40,9 @@ public class MainActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                MMKV kv = MMKV.defaultMMKV();
+                kv.putInt("test", 1000);
+
                 v.setEnabled(false);//防止点击重入
 
                 PluginManager pluginManager = InitApplication.getPluginManager();
@@ -73,6 +81,17 @@ public class MainActivity extends Activity {
         });
 
         linearLayout.addView(callServiceButton);
+
+        Button callBookActivityButton = new Button(this);
+        callBookActivityButton.setText("调用Book页面");
+        callBookActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/host/book").navigation();
+            }
+        });
+
+        linearLayout.addView(callBookActivityButton);
 
         setContentView(linearLayout);
     }

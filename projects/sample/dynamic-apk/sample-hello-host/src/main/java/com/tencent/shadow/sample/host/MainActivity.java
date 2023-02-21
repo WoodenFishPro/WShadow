@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.tencent.mmkv.MMKV;
 import com.tencent.shadow.sample.api.hello.IHelloWorld;
 import com.tencent.shadow.sample.host.api.HelloWorldApiHolder;
 
@@ -39,6 +40,9 @@ public class MainActivity extends Activity {
         rootView.setOrientation(LinearLayout.VERTICAL);
 
         rootView.addView(createTextView("演示自定义 api 的动态化，宿主 api 的实现在 hello.apk 中", null));
+
+        MMKV kv = MMKV.defaultMMKV();
+        kv.putInt("test", 100);
 
         final TextView textView = createTextView("等待apk实现", null);
         rootView.addView(createButton("宿主自定义接口的动态化", new View.OnClickListener() {

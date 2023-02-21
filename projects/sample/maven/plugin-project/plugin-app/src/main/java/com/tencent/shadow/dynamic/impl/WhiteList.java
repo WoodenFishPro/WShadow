@@ -28,7 +28,6 @@ public interface WhiteList {
             {
                     "com.tencent.host.shadow",
                     "com.tencent.shadow.test.lib.constant",
-                    "com.yctapp.base.account",
-                    "com.tencent.mmkv"
+//                    "com.tencent.mmkv",
             };
 }

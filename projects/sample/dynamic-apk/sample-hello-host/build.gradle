@@ -48,6 +48,7 @@ dependencies {
 
     //region hello.apk 演示
     implementation project(':sample-hello-api-holder')
+    implementation 'com.tencent:mmkv:1.2.15'
     //endregion
 }
 

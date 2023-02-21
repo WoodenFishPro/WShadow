@@ -10,6 +10,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -31,7 +37,6 @@ android {
 
     aaptOptions {
         additionalParameters "--package-id", "0x7E", "--allow-reserved-package-id"
-
     }
 }
 
@@ -39,6 +44,11 @@ dependencies {
     //Shadow Transform后业务代码会有一部分实际引用runtime中的类
     //如果不以compileOnly方式依赖，会导致其他Transform或者Proguard找不到这些类
     pluginCompileOnly "com.tencent.shadow.core:runtime:$shadow_version"
+
+    implementation 'com.tencent:mmkv:1.2.15'
+
+    implementation 'com.alibaba:arouter-api:1.5.2'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'
 }
 
 //这段buildscript配置的dependencies是为了apply plugin: 'com.tencent.shadow.plugin'能找到实现
@@ -82,6 +92,7 @@ shadow {
                         buildTask = 'assemblePluginDebug'
                         name = 'plugin-app-plugin-debug.apk'
                         apkPath = 'plugin-app/build/outputs/apk/plugin/debug/plugin-app-plugin-debug.apk'
+                        hostWhiteList = ["com.tencent.mmkv"]
                     }
                 }
             }
@@ -96,6 +107,7 @@ shadow {
                         buildTask = 'assemblePluginRelease'
                         name = 'plugin-app-plugin-release.apk'
                         apkPath = 'plugin-app/build/outputs/apk/plugin/release/plugin-app-plugin-release.apk'
+                        hostWhiteList = ["com.tencent.mmkv"]
                     }
                 }
             }

@@ -30,3 +30,20 @@ buildscript {
 apply from: 'buildScripts/gradle/common.gradle'
 
 apply from: "buildScripts/gradle/maven.gradle"
+
+allprojects {
+    repositories {
+        maven {
+            allowInsecureProtocol true
+            url 'http://43.139.20.80:8081/repository/maven-releases/'
+            credentials {
+                username = 'admin'
+                password = 'admin111'
+            }
+        }
+        google()
+        mavenCentral()
+
+        mavenLocal()
+    }
+}

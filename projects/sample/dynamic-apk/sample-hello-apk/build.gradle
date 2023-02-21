@@ -34,4 +34,5 @@ dependencies {
     // 自定义接口在宿主内
     // hello.apk 不必要自己打包一份，只需要通过白名单访问宿主的接口定义，所以是 compileOnly
     compileOnly project(":sample-hello-api")
+    implementation 'com.tencent:mmkv:1.2.15'
 }

@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.shadow_version = '2.1.2'
+    ext.shadow_version = '10.0.0'//'2.1.2'
     repositories {
         maven {
             url 'http://offloadbook.com:8081/repository/maven-releases/'
@@ -24,16 +24,16 @@ allprojects {
             google()
             mavenCentral()
 
-        maven {
-            name = "GitHubPackages"
-            url "https://maven.pkg.github.com/tencent/shadow"
-            //一个只读账号兼容Github Packages暂时不支持匿名下载
-            //https://github.community/t/download-from-github-package-registry-without-authentication/14407
-            credentials {
-                username = 'readonlypat'
-                password = '\u0067hp_s3VOOZnLf1bTyvHWblPfaessrVYyEU4JdNbs'
-            }
-        }
+//        maven {
+//            name = "GitHubPackages"
+//            url "https://maven.pkg.github.com/tencent/shadow"
+//            //一个只读账号兼容Github Packages暂时不支持匿名下载
+//            //https://github.community/t/download-from-github-package-registry-without-authentication/14407
+//            credentials {
+//                username = 'readonlypat'
+//                password = '\u0067hp_s3VOOZnLf1bTyvHWblPfaessrVYyEU4JdNbs'
+//            }
+//        }
         mavenLocal()
     }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Shadow Sample Plugin</string>
+    <string name="food">This is Food Activity [Plugin]</string>
 </resources>

@@ -15,7 +15,6 @@
  * limitations under the License.
  *
  */
-
 package com.tencent.shadow.sample.host;
 
 import android.app.Application;
@@ -23,7 +22,9 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.webkit.WebView;
 
+import com.tencent.mmkv.MMKV;
 import com.tencent.shadow.core.common.LoggerFactory;
+//import com.yctapp.base.account.AccountManger;
 
 public class HostApplication extends Application {
 
@@ -35,6 +36,9 @@ public class HostApplication extends Application {
 
         LoggerFactory.setILoggerFactory(new AndroidLogLoggerFactory());
         PluginHelper.getInstance().init(this);
+        String rootDir = MMKV.initialize(this);
+        System.out.println("mmkv root: " + rootDir);
+      //  (new AccountManger(this)).setUserID("1001");
     }
 
     private static void setWebViewDataDirectorySuffix() {

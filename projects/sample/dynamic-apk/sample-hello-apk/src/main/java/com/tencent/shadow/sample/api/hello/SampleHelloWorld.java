@@ -4,6 +4,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.tencent.mmkv.MMKV;
+
+//import com.yctapp.base.account.AccountManger;
+
 /**
  * @author 林学渊
  * @email linxy59@mail2.sysu.edu.cn
@@ -14,7 +18,11 @@ import android.widget.TextView;
 public class SampleHelloWorld implements IHelloWorldImpl {
     @Override
     public void sayHelloWorld(Context context, TextView textView) {
-        String text = "这是apk中的实现：" + SampleHelloWorld.class.toString();
+
+        MMKV kv = MMKV.defaultMMKV();
+        Integer value = kv.getInt("test", -1);
+
+        String text = "这是apk中的实现：" + SampleHelloWorld.class.toString() + " userId = " + value;
         if (textView == null) {
             return;
         }
